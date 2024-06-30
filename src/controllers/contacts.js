@@ -12,7 +12,7 @@ export const getContactsController = async (req, res) => {
   const {sortBy, sortOrder} = parseSortParams(queryParams, CONTACT_FIELDS_LIST);
   const filter = parseContactsFilterParams(queryParams);
 
-  const contacts = await getAllContacts({
+  const contactsResult = await getAllContacts({
     filter,
     page,
     perPage,
@@ -22,8 +22,8 @@ export const getContactsController = async (req, res) => {
 
   res.status(200).json({
     status: 200,
-    message: contacts?.length ? 'Successfully found contacts!':'There is an empty contacts list',
-    data: contacts
+    message: contactsResult?.data?.length ? 'Successfully found contacts!':'There is an empty contacts list',
+    data: contactsResult
   });
 };
 
