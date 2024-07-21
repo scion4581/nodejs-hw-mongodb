@@ -18,19 +18,24 @@ const contactsSchema = new Schema(
     isFavourite: {
       type: Boolean,
       required: true,
-      default: false
+      default: false,
     },
     contactType: {
       type: String,
       required: true,
       enum: CONTACT_TYPES,
-      default: CONTACT_TYPE_PERSONAL
+      default: CONTACT_TYPE_PERSONAL,
+    },
+    photo: {
+      type: String,
+      required: false,
+      default: null
     },
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'user',
-      required: true
-    }
+      required: true,
+    },
   },
   {
     timestamps: true,
